@@ -1,3 +1,4 @@
+// imports necessarios para a aplicacao rodar
 import { MagnifyingGlassPlus } from "phosphor-react";
 import './styles/main.css';
 import logoImg from './assets/logo-nlw-esports.svg';
@@ -5,6 +6,7 @@ import { Gamebanner } from "./components/Gamebanner";
 import { CreateAdBanner } from "./components/CreateAdBanner";
 import { useEffect, useState } from "react";
 
+//linkando o "game" ao seus devidos props. Ex: game.id
 interface Game {
   id: string;
   title: string;
@@ -17,6 +19,7 @@ interface Game {
 function App() {
   const [games, setGames] = useState<Game[]>([])
 
+  //Puxando a informacao do database 
   useEffect(() => {
     fetch('http://localhost:3333/games')
     .then(Response => Response.json())
@@ -25,6 +28,7 @@ function App() {
     })
   }, [])
 
+  //retornando Logo, texto, banners e criacao de anuncio
   return (
     <div className='Max-w-[1344px] ml-28 mr-28 flex flex-col items-center my-20'>
       <img src={logoImg} alt="" />
@@ -39,7 +43,7 @@ function App() {
             <Gamebanner bannerUrl={game.bannerUrl} title={game.title} adsCount={game._count.ads}/>
           )
         })}
-
+        
       </div>
 
       <CreateAdBanner />

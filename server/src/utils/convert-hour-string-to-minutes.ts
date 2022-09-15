@@ -1,3 +1,4 @@
+//criando uma funcao para converter as horas(strings) em minutos(numbers)
 export function convertHourStringToMinutes (hourString: string) {
     const [hours, minutes] = hourString.split(':').map(Number)
     

@@ -1,18 +1,23 @@
+//imports necessarios para a aplicacao rodar
 import express from 'express'
 import cors from 'cors'
 import { PrismaClient } from "@prisma/client";
 import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes';
 import { convertMinutesToHourString } from './utils/convert-minutes-to-strings';
 
-const app = express();
+//Criando uma log para ver o caminho que o arquivo fez para gerar o database
 const prisma = new PrismaClient({
     log: ['query']
 })
+const app = express();
 
+//aplicando json ao express para que ele possa interpretar
 app.use(express.json())
+
+//cors = dar permissao de edicao apenas para um endereco definido
 app.use(cors())
 
-
+//pegando os games do database
 app.get ('/games', async (request, response) => {
     const games = await prisma.game.findMany({
         include: {
@@ -27,6 +32,7 @@ app.get ('/games', async (request, response) => {
     return response.json(games)
 });
 
+//anexando os ads ao game pelo id
 app.post ('/games/:id/ads', async (request, response) => {
 
     const gameId = request.params.id;
@@ -48,6 +54,7 @@ app.post ('/games/:id/ads', async (request, response) => {
     return response.status(201).json(ad);
 });
 
+//puxando os ads de um game pelo id do mesmo
 app.get('/games/:id/ads', async (request, response) => {
     const gameId = request.params.id;
 
@@ -79,6 +86,7 @@ app.get('/games/:id/ads', async (request, response) => {
     }))
 });
 
+//pegando o discord do player pelo id do anuncio requisitado
 app.get('/ads/:id/discord', async (request, response) => {
     const adId = request.params.id;
 
@@ -97,4 +105,5 @@ app.get('/ads/:id/discord', async (request, response) => {
 
 });
 
+//necessario para fazer o servidor abrir na porta 3333
 app.listen(3333)

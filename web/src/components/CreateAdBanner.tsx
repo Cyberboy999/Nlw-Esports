@@ -1,5 +1,7 @@
+//importacoes necessarias para rodar aplicacao
 import { MagnifyingGlassPlus } from "phosphor-react";
 
+//Criando componente para minimizar codigo escrito no app.tsx (Parte para criar e publicar um anuncio de game)
 export function CreateAdBanner () {
     return (
         <div className='pt-1 bg-nlwgradient self-stretch rounded-lg mt-8 overflow-hidden'>
