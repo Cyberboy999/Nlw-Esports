@@ -1,4 +1,4 @@
-import { Home } from "./src/Screens/Home";
+import { Routes } from "./src/routes/";
 import { Loading } from "./src/components/Loading";
 import { Background } from "./src/components/Background";
 import { StatusBar } from "react-native";
@@ -27,7 +27,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      { fontsloader ? <Home /> : <Loading />}
+      { fontsloader ? <Routes /> : <Loading />}
     </Background>
   );
 }
