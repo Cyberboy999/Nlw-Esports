@@ -1,14 +1,16 @@
 // imports necessarios para a aplicacao rodar
 import { DiscordLogo, GameController, MagnifyingGlassPlus } from "phosphor-react";
-import './styles/main.css';
-import logoImg from './assets/logo-nlw-esports.svg';
-import { Gamebanner } from "./components/Gamebanner";
-import { CreateAdBanner } from "./components/CreateAdBanner";
 import { useEffect, useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog'
-import { Input } from "./components/form/imput";
 
-//linkando o "game" ao seus devidos props. Ex: game.id
+import { Gamebanner } from "./components/Gamebanner";
+import { CreateAdBanner } from "./components/CreateAdBanner";
+import { Input } from "./components/form/input";
+
+import './styles/main.css';
+import logoImg from './assets/logo-nlw-esports.svg';
+
+  //linkando o "game" ao seus devidos props. Ex: game.id
 interface Game {
   id: string;
   title: string;
@@ -50,10 +52,10 @@ function App() {
           )
         })}
         
+  {/* Criando o modal para abrir uma tela sobreposta, para preenchimento do formulario */}
       </div>
       <Dialog.Root>
         <CreateAdBanner />
-
         <Dialog.Portal>
           <Dialog.Overlay className="bg-black/60 inset-0 fixed">
             <Dialog.Content className="fixed bg-[#2a2636] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480] shadow-lg shadow-black/25">
@@ -85,27 +87,13 @@ function App() {
                       <label htmlFor="weekDays">Quando costuma jogar?</label>
 
                       <div className="grid grid-cols-4 gap-2">
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Domingo">D
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Segunda">S
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Terca">T
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Quarta">Q
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Quinta">Q
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Sexta">S
-                        </button>
-                        <button 
-                        className="w-8 h-8 rounded bg-zinc-900" title="Sabado">S
-                        </button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Domingo">D</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Segunda">S</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Terca">T</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Quarta">Q</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Quinta">Q</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Sexta">S</button>
+                        <button className="w-8 h-8 rounded bg-zinc-900" title="Sabado">S</button>
                       </div>
                     </div>
                     <div className="flex flex-col gap-2 flex-1">
@@ -135,7 +123,6 @@ function App() {
         </Dialog.Portal>
       </Dialog.Root>
     </div>
-    
   )
 }
 
